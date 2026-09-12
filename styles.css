@@ -1,97 +1,121 @@
-body {
-    margin: 0px;
-    text-align: center;
-    font-family: "Merriweather", serif;
-
+/* Base Styles */
+* {
+    box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+    text-align: center;
+    font-family: "Merriweather", serif;
+    overflow-x: hidden;
+    /* Prevents unwanted horizontal scrolling */
+}
+
+/* Fluid Typography */
 h1 {
     margin: 0;
     font-family: "Sacramento", cursive;
-    font-size: 5.625rem;
+    font-size: clamp(3rem, 8vw, 5.625rem);
     color: #66bfbf;
+    padding-top: 50px;
 }
 
 h2 {
     font-family: "Montserrat", sans-serif;
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     color: #66bfbf;
     font-weight: normal;
-
 }
 
 h3 {
     font-family: "Montserrat", sans-serif;
     color: #11999e;
+    font-size: clamp(1.2rem, 3vw, 1.75rem);
 }
-
 
 .top-container {
     background-color: #e4f9f5;
+    position: relative;
+    padding: 20px 10px 0;
+    overflow: hidden;
 }
 
-
+/* Responsive Images & Hero Elements */
 img {
-    height: 100px;
-    width: 100px;
+    max-width: 100%;
+    height: auto;
 }
 
 .mountain {
-    height: 300px;
-    width: 500px;
-}
-
-.second {
-    position: relative;
-    bottom: 250px;
-    left: 50px;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
 }
 
 .first {
     position: relative;
-    left: 130px;
+    left: min(130px, 15vw);
+    max-width: 100px;
 }
 
+/* .second {
+    position: relative;
+    bottom: min(300px, 10vw);
+    left: min(50px, 8vw);
+    max-width: 100px;
+} */
+
+/* Skills Section using Modern Flexbox */
 .skill-row {
-    width: 50%;
-    margin: 100px auto;
+    width: 80%;
+    max-width: 700px;
+    margin: 60px auto;
     text-align: left;
     line-height: 2;
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
-.front {
-    width: ;
-    float: left;
-    margin-right: 30px;
-    margin-bottom: 90px;
-}
-
+.front,
 .back {
-    float: right;
-    margin-left: 30px;
-    margin-bottom: 90px;
+    float: none;
+    margin: 0;
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
 }
 
+/* Horizontal Rule */
 hr {
     border: dotted #9ba5a5 6px;
     border-bottom: none;
-    width: 4%;
-    margin: 100px auto;
+    width: 50px;
+    margin: 60px auto;
 }
 
+/* Contact & Footer */
 .contact-me {
     line-height: 2;
+    padding: 0 20px;
 }
 
 .bottom-container {
     background-color: #66bfbf;
-    padding: 50px 0 20px;
+    padding: 50px 20px 20px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 a {
     color: #11999e;
-    margin: 10px 20px;
     text-decoration: none;
+    padding: 5px;
 }
 
 a:hover {
@@ -101,5 +125,19 @@ a:hover {
 .copyright {
     color: #eaf6f6;
     font-size: 0.75rem;
-    padding: 20px 0px;
+    padding: 20px 0;
+}
+
+/* Media Queries for Mobile Screens */
+@media (max-width: 600px) {
+    .skill-row {
+        flex-direction: column;
+        text-align: center;
+        width: 90%;
+        margin: 40px auto;
+    }
+
+    .second {
+        bottom: 150px;
+    }
 }
